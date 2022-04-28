@@ -12,7 +12,7 @@ function App() {
 
 
   const storeUser = (token) => {
-    console.log("in App.js spremam token "+token);
+    console.log("in App.js spremam token u Local Storage"+token);
     localStorage.setItem("token", token);
 
   };
@@ -32,12 +32,14 @@ function App() {
   //checks if token date is validate ; if matches today's date
   const checkTokenValidity = (token) => {
     if(!localStorage.getItem("token")){
+      console.log("Nema tokena u Local Storage");
       return false;
     }
 
     const currentDate = formatDate(new Date());
     const tokenDate = token.substr(token.length - 10);
     if(currentDate === tokenDate){
+      console.log("Token u Local Storage-u je ispravan");
       return true
     }
     return false

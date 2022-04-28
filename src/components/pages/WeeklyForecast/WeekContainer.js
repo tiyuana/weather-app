@@ -1,4 +1,3 @@
-import react from "react";
 import DayCard from "./DayCard";
 import { useParams } from "react-router";
 

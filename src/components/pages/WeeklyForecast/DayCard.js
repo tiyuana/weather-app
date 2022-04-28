@@ -1,5 +1,3 @@
-import react from "react";
-import Card from "../../UI/Card";
 import {useParams } from "react-router";
 import {Link} from 'react-router-dom';
 

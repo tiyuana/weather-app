@@ -1,4 +1,4 @@
-import react , {useEffect , useState} from "react";
+import {useEffect , useState} from "react";
 import { useParams } from "react-router";
 import WeekContainer from "../WeeklyForecast/WeekContainer";
 import { useLocation } from 'react-router-dom'

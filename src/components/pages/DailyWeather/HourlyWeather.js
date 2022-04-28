@@ -1,4 +1,3 @@
-import react from "react";
 import HourCard from "./HourCard";
 
 const HourlyWeather = (props) => {
