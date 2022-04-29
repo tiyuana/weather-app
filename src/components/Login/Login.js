@@ -1,8 +1,9 @@
-import React , {useState , useRef} from 'react';
+import React , {useState , useRef, useContext} from 'react';
 import { useHistory } from 'react-router';
 import Card from '../UI/Card';
 import styles from "./Login.module.css";
 import ErrorModal from '../UI/ErrorModal';
+import AuthContext from '../../store/auth-context';
 
 const Login = (props) => {
 
@@ -12,6 +13,7 @@ const Login = (props) => {
     const passwordRef = useRef();
 
     const [error, setError] = useState();
+    const authCtx = useContext(AuthContext);
 
 
 
@@ -76,10 +78,10 @@ const Login = (props) => {
         console.log("in Login.js Token = "+token);
         console.log("ispravni su svi podaci!");
 
+        authCtx.login(token);
+        console.log("spremio sam token!! valjda")
 
         props.onLogin(token);
-        console.log("spremio sam token u Local storage!!")
-
         emailRef.current.value = '';
         passwordRef.current.value = '';
         console.log("sada idemo na weather, trebali bi");

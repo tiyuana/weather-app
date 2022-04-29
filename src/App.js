@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useContext} from "react";
 import { Route , Switch, Redirect} from "react-router-dom";
 import './App.css';
 import Forecast from './components/pages/Forecast/Forecast';
@@ -6,13 +6,15 @@ import Login from "./components/Login/Login";
 import FiveDayForecast from "./components/pages/Forecast/FiveDayForecast";
 import DailyWeather from "./components/pages/DailyWeather/DailyWeather";
 import Favorites from "./components/pages/Favorites/Favorites";
+import AuthContext from './store/auth-context';
 
 
 function App() {
 
+  const authCtx = useContext(AuthContext);
 
   const storeUser = (token) => {
-    console.log("in App.js spremam token u Local Storage"+token);
+    console.log("in App.js spremam token "+token);
     localStorage.setItem("token", token);
 
   };
@@ -32,14 +34,12 @@ function App() {
   //checks if token date is validate ; if matches today's date
   const checkTokenValidity = (token) => {
     if(!localStorage.getItem("token")){
-      console.log("Nema tokena u Local Storage");
       return false;
     }
 
     const currentDate = formatDate(new Date());
     const tokenDate = token.substr(token.length - 10);
     if(currentDate === tokenDate){
-      console.log("Token u Local Storage-u je ispravan");
       return true
     }
     return false
